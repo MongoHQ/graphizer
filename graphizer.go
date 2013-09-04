@@ -34,7 +34,7 @@ func NewGraphite(proto, endpoint string) *Graphite {
 		proto:          proto,
 		endpoint:       endpoint,
 		ch:             make(chan Metric),
-		connectTimeout: 30 * time.Second}
+		connectTimeout: 5 * time.Second}
 	g.getConnection()
 	go g.sender()
 	return g
