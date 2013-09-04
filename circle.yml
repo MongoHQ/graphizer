@@ -28,5 +28,5 @@ deployment:
       - mkdir -p $GOPATH/src/github.com/MongoHQ/
       - cp -R $HOME/$ME $GOPATH/src/github.com/MongoHQ/
       - cd $GOPATH/src/github.com/MongoHQ/$ME; go build && go install
-      - cd $GOPATH; tar zcvf $HOME/$ME-$CIRCLE_BRANCH.tgz bin/$ME
+      - cd $GOPATH; tar zcvf $HOME/$ME-$CIRCLE_BRANCH-src.tgz src/github.com/MongoHQ/
       - cd $HOME/$ME; python ./circle/s3push.py "$HOME/$ME-$CIRCLE_BRANCH.tgz" "$ME-$CIRCLE_BRANCH.tgz"
