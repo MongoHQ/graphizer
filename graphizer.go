@@ -29,7 +29,7 @@ type Graphite struct {
 // create a new Graphite struct and connect to the underlying connection.
 // If the connection isn't immediately successful, we timeout, we sleep, and we retry.
 // if we are underbale to connect after 5 attempts, we panic.
-func newGraphite(proto, endpoint string) *Graphite {
+func NewGraphite(proto, endpoint string) *Graphite {
 	g := &Graphite{
 		proto:          proto,
 		endpoint:       endpoint,

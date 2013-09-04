@@ -64,7 +64,7 @@ func Test_Connect(t *testing.T) {
 	ln := mockListenAndServe(dataChan, 5555)
 	time.Sleep(50 * time.Millisecond)
 	// this will panic if there's an error
-	g := newGraphite(TCP, "127.0.0.1:5555")
+	g := NewGraphite(TCP, "127.0.0.1:5555")
 	g.Close()
 	ln.Close()
 	time.Sleep(50 * time.Millisecond)
@@ -86,7 +86,7 @@ func Test_Write(t *testing.T) {
 	ch := make(chan string, 10)
 	ln := mockListenAndServe(ch, 5555)
 	time.Sleep(50 * time.Millisecond)
-	g := newGraphite("tcp", "localhost:5555")
+	g := NewGraphite("tcp", "localhost:5555")
 	now := time.Now().Unix()
 	data := []struct {
 		in   []Metric
@@ -122,7 +122,7 @@ func Test_Send(t *testing.T) {
 	ch := make(chan string, 10)
 	ln := mockListenAndServe(ch, 5555)
 	time.Sleep(50 * time.Millisecond)
-	g := newGraphite("tcp", "localhost:5555")
+	g := NewGraphite("tcp", "localhost:5555")
 	now := time.Now().Unix()
 	data := []struct {
 		in   []Metric
@@ -161,7 +161,7 @@ func Test_UDP_Write(t *testing.T) {
 	mockUDPListenAndServe(ch, 5555)
 	time.Sleep(50 * time.Millisecond)
 
-	g := newGraphite("udp", ":5555")
+	g := NewGraphite("udp", ":5555")
 	now := time.Now().Unix()
 	data := []struct {
 		in   []Metric

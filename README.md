@@ -19,7 +19,9 @@ type Metric struct {
 }
 ```
 
-There are two methods to push data onto graphite, `Write` israw access to the socket, whereas `Send` pushes data onto a channel, and then delivers the metrics async. 
-`func (g *Graphite) Write(m Metric) error`
+There are three methods to push data onto graphite, `Write` israw access to the socket, whereas `Send` pushes data onto a channel, and then delivers the metrics async.  `SendStruct`  will serialize a struct into an array of graphite metrics and send them out over the wire.
+see: 
+- `func (g *Graphite) Write(m Metric) error`
+- `func (g *Graphite) Send(m Metric)`
+- 
 
-`func (g *Graphite) Send(m Metric)`
