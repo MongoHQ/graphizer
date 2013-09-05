@@ -6,7 +6,7 @@ Graphizer is a go library that talks to graphite.
 Usage
 =====
 ```
-g := graphizer.newGraphite("udp", "localhost:5555")
+g := graphizer.newGraphite(graphizer.UDP, "localhost:5555")
 g.Send(graphite.Metric{"path.to.metric", 123, time.Now().Unix()})
 ```
 
@@ -23,5 +23,5 @@ There are three methods to push data onto graphite, `Write` israw access to the 
 see: 
 - `func (g *Graphite) Write(m Metric) error`
 - `func (g *Graphite) Send(m Metric)`
-- 
+
 
