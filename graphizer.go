@@ -69,7 +69,10 @@ func (g *Graphite) Close() {
 
 func (g *Graphite) sender() {
 	for m := range g.ch {
-		g.Write(m)
+		err := g.Write(m)
+		if err != nil {
+			g.getConnection()
+		}
 	}
 }
 
